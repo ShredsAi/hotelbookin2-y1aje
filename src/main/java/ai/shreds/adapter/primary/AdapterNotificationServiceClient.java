@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ai.shreds.shared.SharedNotificationRequestDTO;
 import ai.shreds.application.ports.ApplicationNotificationServicePort;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
-@Slf4j
 public class AdapterNotificationServiceClient implements ApplicationNotificationServicePort {
+
+    private static final Logger logger = LoggerFactory.getLogger(AdapterNotificationServiceClient.class);
 
     private final RabbitTemplate rabbitTemplate;
 
@@ -27,9 +29,9 @@ public class AdapterNotificationServiceClient implements ApplicationNotification
     public void sendNotification(SharedNotificationRequestDTO request) {
         try {
             rabbitTemplate.convertAndSend(NOTIFICATION_EXCHANGE, NOTIFICATION_ROUTING_KEY, request);
-            log.info("Notification message sent successfully");
+            logger.info("Notification message sent successfully");
         } catch (AmqpException ex) {
-            log.error("Failed to send notification message", ex);
+            logger.error("Failed to send notification message", ex);
             // According to business rule, we should log the exception but not rethrow it
         }
     }

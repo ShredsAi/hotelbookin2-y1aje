@@ -1,6 +1,6 @@
 package ai.shreds.application.ports;
 
-import ai.shreds.shared.dto.SharedAnalyticsEventDTO;
+import ai.shreds.shared.SharedAnalyticsEventDTO;
 
 public interface ApplicationAnalyticsServicePort {
 

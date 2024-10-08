@@ -1,7 +1,7 @@
 package ai.shreds.application.services;
 
 import ai.shreds.application.ports.ApplicationAnalyticsServicePort;
-import ai.shreds.shared.dto.SharedAnalyticsEventDTO;
+import ai.shreds.shared.SharedAnalyticsEventDTO;
 import ai.shreds.adapter.primary.AdapterAnalyticsServiceClient;
 
 import org.springframework.stereotype.Service;

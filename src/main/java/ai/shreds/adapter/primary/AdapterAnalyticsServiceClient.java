@@ -1,5 +1,6 @@
 package ai.shreds.adapter.primary;
 
+import ai.shreds.application.ports.ApplicationAnalyticsServicePort;
 import ai.shreds.shared.dto.SharedAnalyticsEventDTO;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

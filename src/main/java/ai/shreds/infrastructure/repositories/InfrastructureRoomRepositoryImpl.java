@@ -6,9 +6,10 @@ import ai.shreds.domain.ports.DomainPortRoomRepository;
 import ai.shreds.infrastructure.repositories.entities.RoomEntity;
 import ai.shreds.infrastructure.repositories.jpa.JpaRoomRepository;
 import ai.shreds.infrastructure.repositories.mappers.RoomMapper;
-import ai.shreds.shared.enums.SharedEnumRoomStatus;
+import ai.shreds.shared.SharedEnumRoomStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import java.util.Optional;
 import java.util.UUID;
 

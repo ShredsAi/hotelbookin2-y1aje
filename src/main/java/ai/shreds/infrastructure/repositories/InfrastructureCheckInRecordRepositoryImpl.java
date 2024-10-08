@@ -7,7 +7,6 @@ import ai.shreds.infrastructure.mappers.InfrastructureCheckInRecordMapper;
 import ai.shreds.infrastructure.repositories.jpa.CheckInRecordJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 import java.util.UUID;
 

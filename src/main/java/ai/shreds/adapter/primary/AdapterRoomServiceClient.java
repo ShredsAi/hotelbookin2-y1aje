@@ -43,6 +43,6 @@ interface RoomServiceFeignClient {
 }
 
 @Data
-static class RoomStatusUpdateRequest {
+class RoomStatusUpdateRequest {
     private SharedEnumRoomStatus status;
 }

@@ -8,10 +8,9 @@ import ai.shreds.shared.SharedCheckInResponseDTO;
 import ai.shreds.shared.SharedRoomDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.UUID;
 import java.sql.Timestamp;
-import java.util.Objects;
 
 @Service
 public class ApplicationCheckInService implements ApplicationCheckInServicePort {
@@ -31,12 +30,10 @@ public class ApplicationCheckInService implements ApplicationCheckInServicePort 
 
         DomainEntityCheckInRecord checkInRecord = Objects.requireNonNull(domainPortCheckInProcess.processCheckIn(reservationId, guestId, staffId));
 
-        return mapToSharedCheckInResponseDTO(Optional.ofNullable(checkInRecord));
+        return mapToSharedCheckInResponseDTO(checkInRecord);
     }
 
-    private SharedCheckInResponseDTO mapToSharedCheckInResponseDTO(Optional<DomainEntityCheckInRecord> checkInRecordOpt) {
-        DomainEntityCheckInRecord checkInRecord = checkInRecordOpt.orElseThrow(() -> new IllegalArgumentException("Check-in record is null"));
-
+    private SharedCheckInResponseDTO mapToSharedCheckInResponseDTO(DomainEntityCheckInRecord checkInRecord) {
         SharedRoomDTO roomDTO = new SharedRoomDTO();
         roomDTO.setRoomId(checkInRecord.getRoom().getRoomId());
         roomDTO.setRoomNumber(checkInRecord.getRoom().getRoomNumber());

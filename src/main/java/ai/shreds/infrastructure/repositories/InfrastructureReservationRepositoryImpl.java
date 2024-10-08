@@ -1,9 +1,11 @@
 package ai.shreds.infrastructure.repositories;
 
 import ai.shreds.domain.entities.DomainEntityReservation;
-import ai.shreds.domain.exceptions.DomainExceptionInvalidReservation;
 import ai.shreds.domain.ports.DomainPortReservationRepository;
 import ai.shreds.shared.SharedEnumReservationStatus;
+import ai.shreds.infrastructure.entities.ReservationEntity;
+import ai.shreds.infrastructure.mappers.ReservationMapper;
+import ai.shreds.infrastructure.repositories.jpa.ReservationJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,7 +40,7 @@ public class InfrastructureReservationRepositoryImpl implements DomainPortReserv
     @Transactional
     public void updateStatus(UUID reservationId, SharedEnumReservationStatus status) {
         ReservationEntity reservationEntity = reservationJpaRepository.findById(reservationId).orElseThrow(() ->
-            new DomainExceptionInvalidReservation("Reservation not found with ID: " + reservationId));
+            new IllegalArgumentException("Reservation not found with ID: " + reservationId));
         reservationEntity.setStatus(status.name());
         reservationJpaRepository.save(reservationEntity);
     }

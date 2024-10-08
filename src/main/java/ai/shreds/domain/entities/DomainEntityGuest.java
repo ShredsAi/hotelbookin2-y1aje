@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-AllArgsConstructor
+@AllArgsConstructor
 public class DomainEntityGuest {
     private UUID guestId;
     private String name;

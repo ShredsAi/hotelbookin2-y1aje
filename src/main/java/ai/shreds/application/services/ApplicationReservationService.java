@@ -24,15 +24,15 @@ public class ApplicationReservationService implements ApplicationReservationServ
 
     @Override
     public SharedReservationDTO validateReservation(UUID reservationId) {
-        SharedReservationDTO reservation = reservationServiceClient.getReservationById(reservationId);
+        SharedReservationDTO reservation = reservationServiceClient.validateReservation(reservationId);
         if (reservation == null) {
             throw new ReservationNotFoundException("Reservation with ID " + reservationId + " not found.");
         }
         if (!SharedEnumReservationStatus.BOOKED.equals(reservation.getStatus())) {
             throw new InvalidReservationStatusException("Reservation with ID " + reservationId + " is not eligible for check-in.");
         }
-        if (reservation.getCheckInDate().isAfter(LocalDateTime.now())) {
-            throw an EarlyCheckInException("Cannot check in before the scheduled check-in date.");
+        if (reservation.getCheckInDate().toLocalDateTime().isAfter(LocalDateTime.now())) {
+            throw new EarlyCheckInException("Cannot check in before the scheduled check-in date.");
         }
         return reservation;
     }

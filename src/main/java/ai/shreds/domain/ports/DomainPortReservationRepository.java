@@ -1,7 +1,7 @@
 package ai.shreds.domain.ports;
 
 import ai.shreds.domain.entities.DomainEntityReservation;
-import ai.shreds.shared.enums.SharedEnumReservationStatus;
+import ai.shreds.shared.SharedEnumReservationStatus;
 import java.util.Optional;
 import java.util.UUID;
 

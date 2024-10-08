@@ -1,7 +1,7 @@
 package ai.shreds.application.services;
 
 import ai.shreds.application.ports.ApplicationNotificationServicePort;
-import ai.shreds.shared.dtos.SharedNotificationRequestDTO;
+import ai.shreds.shared.SharedNotificationRequestDTO;
 import ai.shreds.adapter.primary.AdapterNotificationServiceClient;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;

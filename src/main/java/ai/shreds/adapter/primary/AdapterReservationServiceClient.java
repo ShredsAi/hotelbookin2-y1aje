@@ -6,14 +6,7 @@ import ai.shreds.shared.SharedEnumReservationStatus;
 import ai.shreds.adapter.exceptions.AdapterException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.cloud.openfeign.FeignClient;
 import java.util.UUID;
-
-@FeignClient(name = "ReservationServiceFeignClient")
-interface ReservationServiceFeignClient {
-    SharedReservationDTO getReservationById(UUID reservationId);
-    void updateReservationStatus(UUID reservationId, SharedEnumReservationStatus status);
-}
 
 @Component
 public class AdapterReservationServiceClient implements ApplicationReservationServicePort {

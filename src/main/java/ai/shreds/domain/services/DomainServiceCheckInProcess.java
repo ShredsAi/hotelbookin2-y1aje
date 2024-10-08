@@ -73,7 +73,7 @@ public class DomainServiceCheckInProcess implements DomainPortCheckInProcess {
         DomainEntityRoom room = roomOpt.get();
 
         if (room.getStatus() != SharedEnumRoomStatus.AVAILABLE) {
-            throw a new DomainExceptionRoomUnavailable("Room is not available.");
+            throw new DomainExceptionRoomUnavailable("Room is not available.");
         }
 
         reservation.setStatus(SharedEnumReservationStatus.CHECKED_IN);
